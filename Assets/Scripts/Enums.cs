@@ -1,4 +1,4 @@
-﻿namespace Meteor
+﻿namespace PlanetStamp.Enums
 {
 	public enum PlanetType
 	{

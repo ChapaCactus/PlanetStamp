@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
-public class PlanetMaster : ScriptableObject
+namespace PlanetStamp.Master
 {
+	[CreateAssetMenu]
+	public class PlanetMaster : ScriptableObject
+	{
+	}
 }

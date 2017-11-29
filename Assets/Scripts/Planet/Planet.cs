@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Meteor
+namespace PlanetStamp
 {
 	public class Planet : MonoBehaviour
 	{
