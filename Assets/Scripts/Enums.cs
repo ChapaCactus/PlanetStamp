@@ -1,7 +1,10 @@
-﻿namespace PlanetStamp.Enums
+﻿namespace PlanetStamp
 {
-	public enum PlanetType
+	public class Enums
 	{
-		Normal
+		public enum PlanetType
+		{
+			Normal
+		}
 	}
 }

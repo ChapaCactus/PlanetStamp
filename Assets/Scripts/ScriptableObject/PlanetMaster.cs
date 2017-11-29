@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-namespace PlanetStamp.Master
+using PlanetStamp;
+
+namespace PlanetStamp
 {
 	[CreateAssetMenu]
 	public class PlanetMaster : ScriptableObject
 	{
+		public PlanetVO[] rows;
 	}
 }
