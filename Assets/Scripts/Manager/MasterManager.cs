@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PlanetStamp
 {
-	public class MasterManager : MonoBehaviour
+	public class MasterManager : SingletonMonoBehaviour<MasterManager>
 	{
 		private static readonly string MASTER_EXTENSION_NAME = "*.asset";
 
