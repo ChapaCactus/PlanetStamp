@@ -12,6 +12,8 @@ namespace PlanetStamp
 		[SerializeField]
 		private PlanetVO m_data;
 
+		public string ID { get { return m_data.ID; } }
+
 		public PlanetVO GetVO()
 		{
 			return m_data;
