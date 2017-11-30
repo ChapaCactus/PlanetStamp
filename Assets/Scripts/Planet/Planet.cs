@@ -17,15 +17,17 @@ namespace PlanetStamp
 		public static void Create(string id, Transform parent, Action<Planet> callback)
 		{
 			var dto = new PlanetDTO();
-			var vo = MasterManager.I.PlanetMasters[id].GetVO();
-			dto.SetVO(vo);
+			MasterManager.I.GetPlaneMasterRow(id, (vo) =>
+			{
+				dto.SetVO(vo);
 
-			var prefab = Resources.Load(dto.PrefabPath) as GameObject;
-			var go = Instantiate(prefab, parent);
-			var planet = go.GetComponent<Planet>();
-			planet.Setup(dto);
+				var prefab = Resources.Load(dto.PrefabPath) as GameObject;
+				var go = Instantiate(prefab, parent);
+				var planet = go.GetComponent<Planet>();
+				planet.Setup(dto);
 
-			callback(planet);
+				callback(planet);
+			});
 		}
 
 		private void Setup(PlanetDTO dto)
