@@ -8,13 +8,12 @@ namespace PlanetStamp
 {
 	public class MasterManager : MonoBehaviour
 	{
-		private static readonly string RESOURCES_DIR_NAME = "Resources";
-		private static readonly string MASTER_DIR_PATH = "Master";
-		private static readonly string PLANET_MASTER_DIR_NAME = "Planet";
-
 		private static readonly string MASTER_EXTENSION_NAME = "*.asset";
 
-		public string PlanetMasterDirPath { get { return Application.dataPath + RESOURCES_DIR_NAME + "/" + MASTER_DIR_PATH + "/" + PLANET_MASTER_DIR_NAME; } }
+		private static readonly string RESOURCES_DIR = "Resources/";
+		private static readonly string PLANET_RESOURCES_PATH = "Master/Planet";
+
+		public string PlanetMasterDirFullPath { get { return Application.dataPath + "/" + RESOURCES_DIR + PLANET_RESOURCES_PATH; } }
 
 		public Dictionary<string, PlanetMaster> PlanetMasters { get; private set; } = new Dictionary<string, PlanetMaster>();
 
@@ -35,22 +34,21 @@ namespace PlanetStamp
 
 		private IEnumerator LoadPlanetMasters()
 		{
-			DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/" + "Resources/Master/Planet");
+			DirectoryInfo dir = new DirectoryInfo(PlanetMasterDirFullPath);
 			FileInfo[] infos = dir.GetFiles(MASTER_EXTENSION_NAME);
 
 			foreach (var info in infos)
 			{
-				var master = Resources.Load<PlanetMaster>("Master/Planet/" + Path.GetFileNameWithoutExtension(info.Name));
-				Debug.Log(info.Name);
+				var fileName = Path.GetFileNameWithoutExtension(info.Name);
+				var master = Resources.Load<PlanetMaster>(PLANET_RESOURCES_PATH + "/" + fileName);
 
 				if (PlanetMasters.ContainsKey(master.ID))
 				{
-					Debug.LogWarning("ID: " + master.ID + " は既に追加されています。 MasterのIDが重複しているかも？");
+					Debug.LogWarning("ID: " + master.ID + " は既に追加されているIDです。");
 				}
 				else
 				{
 					PlanetMasters.Add(master.ID, master);
-					Debug.Log("追加したMaster ID: " + master.ID);
 				}
 
 				yield return null;
