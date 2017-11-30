@@ -14,19 +14,16 @@ namespace PlanetStamp
 		public PlanetView View { get; private set; }
 		public PlanetController Controller { get; private set; }
 
-		private static readonly string PREFAB_PATH = "Prefabs/Planet/Planet";
-
-		public static void Create(int id, Transform parent, Action<Planet> callback)
+		public static void Create(string id, Transform parent, Action<Planet> callback)
 		{
-			var prefab = Resources.Load(PREFAB_PATH) as GameObject;
-			var go = Instantiate(prefab, parent);
-
-			var planet = go.GetComponent<Planet>();
-
 			var dto = new PlanetDTO();
 			var vo = new PlanetVO();// ほんとはMasterからロードする
 			dto.SetVO(vo);
 
+			var prefab = Resources.Load(dto.PrefabPath) as GameObject;
+			var go = Instantiate(prefab, parent);
+
+			var planet = go.GetComponent<Planet>();
 			planet.Setup(dto);
 
 			callback(planet);

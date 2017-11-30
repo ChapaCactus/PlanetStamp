@@ -10,23 +10,11 @@ namespace PlanetStamp
 	public class PlanetMaster : ScriptableObject
 	{
 		[SerializeField]
-		private PlanetVO[] m_rows;
+		private PlanetVO m_data;
 
-		public PlanetVO[] Rows { get { return m_rows; } }
-
-		public void GetRow(string id, Action<PlanetVO> callback)
+		public PlanetVO GetVO()
 		{
-			foreach(var row in Rows)
-			{
-				if(row.ID == id)
-				{
-					callback(row);
-					return;
-				}
-			}
-
-			// 見つからなかった場合
-			callback(null);
+			return m_data;
 		}
 	}
 }
