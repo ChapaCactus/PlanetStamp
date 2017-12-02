@@ -8,14 +8,24 @@ namespace PlanetStamp
 	{
 		private Character m_character = null;
 
+		private void Update()
+		{
+			if (!m_character.IsPlayer) return;
+
+			InputCheck();
+		}
+
 		public void Setup(Character character)
 		{
 			m_character = character;
 		}
 
-		public void Jump(float acceleration, Vector2 direction)
+		private void InputCheck()
 		{
-			if (m_character.IsJumping) return;
+			if(Input.GetButtonDown("Jump"))
+			{
+				m_character.Jump(1, new Vector2(0, 1));
+			}
 		}
 	}
 }

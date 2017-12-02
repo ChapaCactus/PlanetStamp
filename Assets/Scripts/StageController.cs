@@ -11,7 +11,7 @@ namespace PlanetStamp
 		{
 			yield return new WaitForSeconds(0.3f);
 
-			Character.Create("PLAYER", null, player =>
+			Character.Create("PLAYER", null, true, (player) =>
 			{
 			});
 		}

@@ -19,9 +19,10 @@ namespace PlanetStamp
 		public Rigidbody2D Rigidbody2D { get; private set; } = null;
 
 		// Flags
+		public bool IsPlayer { get; private set; } = false;
 		public bool IsJumping { get; private set; } = false;
 
-		public static void Create(string id, Transform parent, Action<Character> callback)
+		public static void Create(string id, Transform parent, bool isPlayer, Action<Character> callback)
 		{
 			var dto = new CharacterDTO();
 			MasterManager.I.GetCharacterMasterRow(id, (vo) =>
@@ -31,15 +32,26 @@ namespace PlanetStamp
 				var prefab = Resources.Load(dto.PrefabPath) as GameObject;
 				var go = Instantiate(prefab, parent);
 				var character = go.GetComponent<Character>();
-				character.Setup(dto);
+				character.Setup(dto, isPlayer);
 
 				callback(character);
 			});
 		}
 
-		public void Setup(CharacterDTO dto)
+		public void Jump(float acceleration, Vector2 direction)
+		{
+			if (IsJumping) return;
+
+			Rigidbody2D.velocity = Vector2.zero;
+			var force = (direction * acceleration);
+			Rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+		}
+
+		private void Setup(CharacterDTO dto, bool isPlayer)
 		{
 			m_characterDTO = dto;
+
+			IsPlayer = isPlayer;
 
 			View = GetComponent<CharacterView>();
 
