@@ -11,8 +11,8 @@ namespace PlanetStamp
 	{
 		private PlanetDTO m_planetDTO = null;
 
-		public PlanetView View { get; private set; }
-		public PlanetController Controller { get; private set; }
+		public PlanetView View { get; private set; } = null;
+		public PlanetController Controller { get; private set; } = null;
 
 		public static void Create(string id, Transform parent, Action<Planet> callback)
 		{

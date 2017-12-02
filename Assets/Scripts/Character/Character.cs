@@ -6,9 +6,14 @@ using UnityEngine;
 
 namespace PlanetStamp
 {
+	[RequireComponent(typeof(CharacterView))]
+	[RequireComponent(typeof(CharacterController))]
 	public class Character : MonoBehaviour
 	{
 		private CharacterDTO m_characterDTO = null;
+
+		public CharacterView View { get; private set; } = null;
+		public CharacterController Controller { get; private set; } = null;
 
 		public static void Create(string id, Transform parent, Action<Character> callback)
 		{
