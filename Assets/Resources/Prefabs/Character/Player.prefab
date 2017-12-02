@@ -35,8 +35,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4778579924835850}
+  - component: {fileID: 50331492605651282}
+  - component: {fileID: 114556680112164564}
+  - component: {fileID: 114467367191719406}
+  - component: {fileID: 114458833930648300}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PLAYER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,6 +73,60 @@ Transform:
   m_Father: {fileID: 4778579924835850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50331492605651282
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899352967371472}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &114458833930648300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899352967371472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b451d4cbdcb04bb7a18aa7bfda93a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mainRenderer: {fileID: 212149162637992754}
+--- !u!114 &114467367191719406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899352967371472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb537fbd4b6ef48909794cd00be53b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114556680112164564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899352967371472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8894d7aa616a648929ed99c11e6b1047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212149162637992754
 SpriteRenderer:
   m_ObjectHideFlags: 1

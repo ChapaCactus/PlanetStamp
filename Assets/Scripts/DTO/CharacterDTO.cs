@@ -9,7 +9,7 @@ namespace PlanetStamp
 
 		private static readonly string PREFAB_PATH_HEADER = "Prefabs/Character/";
 
-		public string ID { get { return "";  } }
+		public string ID { get { return m_vo.ID;  } }
 
 		public string Name { get { return m_vo.Name; } }
 

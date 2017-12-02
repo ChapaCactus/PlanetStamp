@@ -9,5 +9,10 @@ namespace PlanetStamp
 	{
 		[SerializeField]
 		private SpriteRenderer m_mainRenderer;
+
+		public void SetSprite(Sprite sprite)
+		{
+			m_mainRenderer.sprite = sprite;
+		}
 	}
 }

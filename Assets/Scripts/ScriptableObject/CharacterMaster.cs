@@ -10,7 +10,7 @@ namespace PlanetStamp
 		[SerializeField]
 		private CharacterVO m_data;
 
-		public string ID { get { return ""; } }
+		public string ID { get { return m_data.ID; } }
 
 		public CharacterVO GetVO()
 		{

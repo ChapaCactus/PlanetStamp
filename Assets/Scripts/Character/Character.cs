@@ -8,12 +8,18 @@ namespace PlanetStamp
 {
 	[RequireComponent(typeof(CharacterView))]
 	[RequireComponent(typeof(CharacterController))]
+	[RequireComponent(typeof(Rigidbody2D))]
 	public class Character : MonoBehaviour
 	{
 		private CharacterDTO m_characterDTO = null;
 
 		public CharacterView View { get; private set; } = null;
 		public CharacterController Controller { get; private set; } = null;
+
+		public Rigidbody2D Rigidbody2D { get; private set; } = null;
+
+		// Flags
+		public bool IsJumping { get; private set; } = false;
 
 		public static void Create(string id, Transform parent, Action<Character> callback)
 		{
@@ -34,6 +40,13 @@ namespace PlanetStamp
 		public void Setup(CharacterDTO dto)
 		{
 			m_characterDTO = dto;
+
+			View = GetComponent<CharacterView>();
+
+			Controller = GetComponent<CharacterController>();
+			Controller.Setup(this);
+
+			Rigidbody2D = GetComponent<Rigidbody2D>();
 		}
 	}
 }
