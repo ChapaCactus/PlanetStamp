@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_data:
     m_name: "\u30D7\u30EC\u30A4\u30E4\u30FC"
+    m_prefabPath: Prefabs/Character/Player

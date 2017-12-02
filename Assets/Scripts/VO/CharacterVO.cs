@@ -10,11 +10,6 @@ namespace PlanetStamp
 		[SerializeField]
 		private string m_name;
 
-		[SerializeField]
-		private string m_prefabPath;
-
 		public string Name { get { return m_name; } }
-
-		public string PrefabPath { get { return m_prefabPath; } }
 	}
 }
