@@ -9,7 +9,7 @@ namespace PlanetStamp
 	[RequireComponent(typeof(PlanetController))]
 	public class Planet : MonoBehaviour
 	{
-		private PlanetDTO m_planetDTO;
+		private PlanetDTO m_planetDTO = null;
 
 		public PlanetView View { get; private set; }
 		public PlanetController Controller { get; private set; }

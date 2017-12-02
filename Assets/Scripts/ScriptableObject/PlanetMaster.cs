@@ -2,8 +2,6 @@
 
 using UnityEngine;
 
-using PlanetStamp;
-
 namespace PlanetStamp
 {
 	[CreateAssetMenu]
