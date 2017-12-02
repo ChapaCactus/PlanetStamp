@@ -9,6 +9,7 @@ namespace PlanetStamp
 	[RequireComponent(typeof(CharacterView))]
 	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(BoxCollider2D))]
 	public class Character : MonoBehaviour
 	{
 		private CharacterDTO m_characterDTO = null;
@@ -52,6 +53,7 @@ namespace PlanetStamp
 		public void Landing()
 		{
 			IsJumping = false;
+			Rigid2D.velocity = Vector2.zero;
 		}
 
 		private void Setup(CharacterDTO dto, bool isPlayer)
