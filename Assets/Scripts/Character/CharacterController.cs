@@ -20,6 +20,14 @@ namespace PlanetStamp
 			m_character = character;
 		}
 
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			if(collision.gameObject.tag == "Planet")
+			{
+				m_character.Landing();
+			}
+		}
+
 		private void InputCheck()
 		{
 			if(Input.GetButtonDown("Jump"))

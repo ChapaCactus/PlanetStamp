@@ -16,7 +16,7 @@ namespace PlanetStamp
 		public CharacterView View { get; private set; } = null;
 		public CharacterController Controller { get; private set; } = null;
 
-		public Rigidbody2D Rigidbody2D { get; private set; } = null;
+		public Rigidbody2D Rigid2D { get; private set; } = null;
 
 		// Flags
 		public bool IsPlayer { get; private set; } = false;
@@ -42,9 +42,16 @@ namespace PlanetStamp
 		{
 			if (IsJumping) return;
 
-			Rigidbody2D.velocity = Vector2.zero;
+			IsJumping = true;
+
+			Rigid2D.velocity = Vector2.zero;
 			var force = (direction * acceleration);
-			Rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+			Rigid2D.AddForce(force, ForceMode2D.Impulse);
+		}
+
+		public void Landing()
+		{
+			IsJumping = false;
 		}
 
 		private void Setup(CharacterDTO dto, bool isPlayer)
@@ -58,7 +65,7 @@ namespace PlanetStamp
 			Controller = GetComponent<CharacterController>();
 			Controller.Setup(this);
 
-			Rigidbody2D = GetComponent<Rigidbody2D>();
+			Rigid2D = GetComponent<Rigidbody2D>();
 		}
 	}
 }
