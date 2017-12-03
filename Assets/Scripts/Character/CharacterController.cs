@@ -24,8 +24,7 @@ namespace PlanetStamp
 		{
 			if(col.gameObject.tag == "Planet")
 			{
-				Debug.Log("axasdsadpin");
-				m_character.Landing();
+				m_character.Landing(col.transform);
 			}
 		}
 

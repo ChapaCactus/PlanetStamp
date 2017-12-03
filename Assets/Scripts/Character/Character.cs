@@ -50,11 +50,13 @@ namespace PlanetStamp
 			Rigid2D.AddForce(force, ForceMode2D.Impulse);
 		}
 
-		public void Landing()
+		public void Landing(Transform land)
 		{
 			IsJumping = false;
 			Rigid2D.velocity = Vector2.zero;
 			transform.position = transform.position;
+
+			View.OnLandingRotation(land);
 		}
 
 		private void Setup(CharacterDTO dto, bool isPlayer)
