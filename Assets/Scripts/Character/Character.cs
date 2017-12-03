@@ -54,6 +54,7 @@ namespace PlanetStamp
 		{
 			IsJumping = false;
 			Rigid2D.velocity = Vector2.zero;
+			transform.position = transform.position;
 		}
 
 		private void Setup(CharacterDTO dto, bool isPlayer)

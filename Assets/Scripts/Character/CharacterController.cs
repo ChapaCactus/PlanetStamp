@@ -20,10 +20,11 @@ namespace PlanetStamp
 			m_character = character;
 		}
 
-		private void OnTriggerEnter2D(Collider2D col)
+		private void OnCollisionEnter2D(Collision2D col)
 		{
 			if(col.gameObject.tag == "Planet")
 			{
+				Debug.Log("axasdsadpin");
 				m_character.Landing();
 			}
 		}
@@ -32,7 +33,7 @@ namespace PlanetStamp
 		{
 			if(Input.GetButtonDown("Jump"))
 			{
-				m_character.Jump(2, new Vector2(0, 1));
+				m_character.Jump(5, new Vector2(0, 1));
 			}
 		}
 	}

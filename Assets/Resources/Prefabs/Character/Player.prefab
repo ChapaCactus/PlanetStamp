@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4952863619198148}
   - component: {fileID: 212149162637992754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spaceman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   - component: {fileID: 50618738013258812}
   - component: {fileID: 61605133887299848}
   - component: {fileID: 114247742224056132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PLAYER
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
