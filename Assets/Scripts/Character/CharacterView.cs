@@ -24,13 +24,13 @@ namespace PlanetStamp
 
 		public void OnLandingRotation(Transform land)
 		{
-			SetRotate(land);
+			SetRotate(Vector3.down, land);
 		}
 
-		private void SetRotate(Transform target)
+		private void SetRotate(Vector3 from, Transform target)
 		{
 			var to = (target.transform.position - Transform.position).normalized;
-			Quaternion.FromToRotation(Vector3.up, to);
+			Transform.rotation = Quaternion.FromToRotation(from, to);
 		}
 	}
 }
