@@ -32,7 +32,7 @@ namespace PlanetStamp
 		{
 			if(Input.GetButtonDown("Jump"))
 			{
-				m_character.Jump(5);
+				m_character.Jump(13);
 			}
 		}
 	}
