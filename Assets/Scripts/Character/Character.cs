@@ -12,6 +12,9 @@ namespace PlanetStamp
 	[RequireComponent(typeof(BoxCollider2D))]
 	public class Character : MonoBehaviour
 	{
+		[SerializeField]
+		private Transform m_head = null;
+
 		private CharacterDTO m_characterDTO = null;
 
 		public CharacterView View { get; private set; } = null;
@@ -39,13 +42,14 @@ namespace PlanetStamp
 			});
 		}
 
-		public void Jump(float acceleration, Vector2 direction)
+		public void Jump(float acceleration)
 		{
 			if (IsJumping) return;
 
 			IsJumping = true;
 
 			Rigid2D.velocity = Vector2.zero;
+			var direction = (m_head.position - transform.position).normalized;
 			var force = (direction * acceleration);
 			Rigid2D.AddForce(force, ForceMode2D.Impulse);
 		}
