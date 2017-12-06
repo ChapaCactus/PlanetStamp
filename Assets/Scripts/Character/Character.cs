@@ -42,6 +42,66 @@ namespace PlanetStamp
 			});
 		}
 
+		private void Update()
+		{
+			Walk();
+		}
+
+		public void Walk()
+		{
+			var LookTransform = GameObject.FindWithTag("Planet").transform;
+
+			Vector3 forward = Vector3.Cross(transform.up, -LookTransform.right).normalized;
+			Vector3 right = Vector3.Cross(transform.up, LookTransform.forward).normalized;
+
+			Vector3 targetVelocity;
+
+			if (false)
+			{
+
+				//if (AutoMoveRight)
+				//{
+				//	targetVelocity = (forward + right) * speed;
+
+				//	if (!facingRight)
+				//	{
+				//		Flip();
+				//	}
+
+				//}
+				//else
+				//{
+				//	targetVelocity = (forward + -right) * speed;
+
+				//	if (facingRight)
+				//	{
+				//		Flip();
+				//	}
+				//}
+
+
+			}
+			else
+			{
+				targetVelocity = (forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal")) * 	5;
+			}
+
+			Vector3 velocity = transform.InverseTransformDirection(GetComponent<Rigidbody2D>().velocity);
+
+			velocity.y = 0;
+			velocity = transform.TransformDirection(velocity);
+			Vector3 velocityChange = transform.InverseTransformDirection(targetVelocity - velocity);
+
+			velocityChange.x = Mathf.Clamp(velocityChange.x, -10, 10);
+			velocityChange.z = Mathf.Clamp(velocityChange.z, -10, 10);
+			velocityChange.y = 0;
+
+			velocityChange = transform.TransformDirection(velocityChange);
+
+			// You need the MaxVelocityChange variable if you change the AddForde to Force instead Impulse
+			GetComponent<Rigidbody2D>().AddForce(velocityChange, ForceMode2D.Impulse);
+		}
+
 		public void Jump(float acceleration)
 		{
 			if (IsJumping) return;
