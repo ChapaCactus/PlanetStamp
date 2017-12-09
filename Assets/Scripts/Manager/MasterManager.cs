@@ -15,12 +15,15 @@ namespace PlanetStamp
 
 		private static readonly string MASTER_FILE_EXTENSION_NAME = "*.asset";
 
-		private static readonly string RESOURCES_DIR = "Resources/";
+		private static readonly string RESOURCES_DIR = "Resources";
 		private static readonly string PLANET_RESOURCES_PATH = "Master/Planet";
 		private static readonly string CHARACTER_RESOURCES_PATH = "Master/Character";
+		private static readonly string ITEM_RESOURCES_PATH = "Master/Item";
 
-		public string PlanetMasterDirFullPath { get { return Application.dataPath + "/" + RESOURCES_DIR + PLANET_RESOURCES_PATH; } }
-		public string CharacterMasterDirFullPath { get { return Application.dataPath + "/" + RESOURCES_DIR + CHARACTER_RESOURCES_PATH; } }
+		public string ResourcesPath { get { return Application.dataPath + "/" + RESOURCES_DIR + "/"; } }
+		public string PlanetMasterDirFullPath { get { return ResourcesPath + PLANET_RESOURCES_PATH; } }
+		public string CharacterMasterDirFullPath { get { return ResourcesPath + CHARACTER_RESOURCES_PATH; } }
+		public string ItemMasterDirFullPath { get { return ResourcesPath + ITEM_RESOURCES_PATH; } }
 
 		private void Awake()
 		{
@@ -78,6 +81,7 @@ namespace PlanetStamp
 		{
 			yield return LoadPlanetMasters();
 			yield return LoadCharacterMasters();
+			yield return LoadItemMasters();
 		}
 
 		private IEnumerator LoadPlanetMasters()
@@ -120,6 +124,29 @@ namespace PlanetStamp
 				else
 				{
 					m_characterMasters.Add(master.ID, master);
+				}
+
+				yield return null;
+			}
+		}
+
+		private IEnumerator LoadItemMasters()
+		{
+			DirectoryInfo dir = new DirectoryInfo(ItemMasterDirFullPath);
+			FileInfo[] infos = dir.GetFiles(MASTER_FILE_EXTENSION_NAME);
+
+			foreach (var info in infos)
+			{
+				var fileName = Path.GetFileNameWithoutExtension(info.Name);
+				var master = Resources.Load<ItemMaster>(CHARACTER_RESOURCES_PATH + "/" + fileName);
+
+				if (m_itemMasters.ContainsKey(master.ID))
+				{
+					Debug.LogWarning("ID: " + master.ID + " は既に追加されているIDです。");
+				}
+				else
+				{
+					m_itemMasters.Add(master.ID, master);
 				}
 
 				yield return null;
