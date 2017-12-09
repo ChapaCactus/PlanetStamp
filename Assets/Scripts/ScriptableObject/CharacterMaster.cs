@@ -8,13 +8,10 @@ namespace PlanetStamp
 	public class CharacterMaster : ScriptableObject
 	{
 		[SerializeField]
-		private CharacterVO m_data;
+		private CharacterVO m_characterVO;
 
-		public string ID { get { return m_data.ID; } }
+		public string ID { get { return m_characterVO.ID; } }
 
-		public CharacterVO GetVO()
-		{
-			return m_data;
-		}
+		public CharacterVO GetVO() { return m_characterVO; }
 	}
 }
