@@ -11,6 +11,7 @@ namespace PlanetStamp
 	{
 		private Dictionary<string, PlanetMaster> m_planetMasters = new Dictionary<string, PlanetMaster>();
 		private Dictionary<string, CharacterMaster> m_characterMasters = new Dictionary<string, CharacterMaster>();
+		private Dictionary<string, ItemMaster> m_itemMasters = new Dictionary<string, ItemMaster>();
 
 		private static readonly string MASTER_FILE_EXTENSION_NAME = "*.asset";
 
@@ -45,6 +46,20 @@ namespace PlanetStamp
 			if(m_characterMasters.ContainsKey(id))
 			{
 				var vo = m_characterMasters[id].GetVO();
+				callback(vo);
+			}
+			else
+			{
+				Debug.LogError("Master ID: " + id + " が存在しません。");
+				callback(null);
+			}
+		}
+
+		public void GetItemMasterRow(string id, Action<ItemVO> callback)
+		{
+			if (m_characterMasters.ContainsKey(id))
+			{
+				var vo = m_itemMasters[id].GetVO();
 				callback(vo);
 			}
 			else

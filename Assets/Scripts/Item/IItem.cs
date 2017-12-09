@@ -1,4 +1,7 @@
-﻿interface IItem
+﻿namespace PlanetStamp
 {
-	void Use();
+	interface IItem
+	{
+		void Use(Character user);
+	}
 }
