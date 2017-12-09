@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+
+using UnityEngine;
 
 namespace PlanetStamp
 {
+	[Serializable]
 	public class CharacterDTO
 	{
+		[SerializeField]
 		private CharacterVO m_vo;
 
 		private static readonly string PREFAB_PATH_HEADER = "Prefabs/Character/";

@@ -15,6 +15,7 @@ namespace PlanetStamp
 		[SerializeField]
 		private Transform m_head = null;
 
+		[SerializeField]
 		private CharacterDTO m_characterDTO = null;
 
 		public CharacterView View { get; private set; } = null;
