@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace PlanetStamp
 {
+	[RequireComponent(typeof(ItemView))]
+	[RequireComponent(typeof(ItemController))]
+	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(CircleCollider2D))]
 	public class Item : MonoBehaviour, IItem
 	{
 		[SerializeField]
